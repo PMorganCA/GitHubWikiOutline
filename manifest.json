@@ -1,19 +1,20 @@
 {
-  "manifest_version": 2,
-  "name": "GitHubWikiOutline",
-  "version": "1.0",
+	"manifest_version": 2,
+	"name": "GitHubWikiOutline",
+	"version": "1.0",
 
-  "default_locale": "en",
-  "description": "A Content Script extension for Google Chome that replaces the Pages right-panel in GitHub wiki Pages with an expandable outline / table-of-contents.",
-  "icons": { "16":  "resources/gfx/icon16.png",
-			 "48":  "resources/gfx/icon48.png",
-			 "128": "resources/gfx/icon128.png" },
+	"description": "A Content Script extension for Google Chome that replaces the Pages right-panel in GitHub wiki Pages with an expandable outline / table-of-contents.",
+	"icons": {
+		"16":  "resources/gfx/icon16.png",
+		"48":  "resources/gfx/icon48.png",
+		"128": "resources/gfx/icon128.png"
+	},
   
-  "content_scripts": [
-    {
-      "matches": ["https://github.com/*/wiki/*"],
-      //"css": ["resources/css/mystyles.css"],
-      "js": ["jquery.js", "gitHubWikiOutline.js"]
-    }
-  ]
+	"content_scripts": [{
+		"matches": ["https://github.com/*/wiki*"],
+		"css": ["resources/css/gitHubWikiOutline.css"],
+		"js": ["gitHubWikiOutline.js"],
+		"run-at": "document_end"
+	}],
+	"web_accessible_resources": [ "resources/gfx/slideRight.png" ]
 }
