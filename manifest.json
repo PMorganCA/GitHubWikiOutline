@@ -13,12 +13,13 @@
 	{
 		"matches": ["https://github.com/*/wiki*"],
 		"css": ["resources/css/gitHubWikiOutline.css"],
-		"js": ["jquery-2.1.4.min.js", "gitHubWikiOutline.js"]
+		"js": ["jquery-2.1.4.min.js", "gitHubWikiOutline.js"],
+		"run_at": "document_end"
 	}
 	],
 
 	"web_accessible_resources": [
-    		"resources/gfx/*.png",
+   		"resources/gfx/*.png",
 		"resources/css/*.css",
 		"jquery-2.1.4.min.js"
 	]
