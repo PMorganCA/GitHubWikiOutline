@@ -11,11 +11,19 @@
   
 	"content_scripts": [
 	{
-		"matches": ["https://github.com/*/wiki*"],
+		"matches": ["*://github.com/*"],
 		"css": ["resources/css/gitHubWikiOutline.css"],
 		"js": ["jquery-2.1.4.min.js", "gitHubWikiOutline.js"],
 		"run_at": "document_end"
 	}
+	],
+
+	"background": {
+		"scripts": ["jquery-2.1.4.min.js", "background.js"]
+	},
+
+	"permissions": [
+		"*://github.com/*", "tabs", "webNavigation"
 	],
 
 	"web_accessible_resources": [
