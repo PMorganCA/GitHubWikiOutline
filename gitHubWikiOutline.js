@@ -81,8 +81,33 @@ if (mainContent != null)
 
 	// ...add the new elements to the document
 	//
-	slideLocation.insertBefore (slideRIcon, slideLocation.children[0])
-	slideLocation.insertBefore (slideLIcon, slideLocation.children[0])
+	slideLocation.insertBefore (slideRIcon, slideLocation.children[0]);
+	slideLocation.insertBefore (slideLIcon, slideLocation.children[0]);
 
+	
 	// next step... sort the toc
+	// var wpCollections = mainContent.getElementsByClassName ("wiki-pages");
+	// if (null != wpCollections  &&  wpCollections.length == 1)
+	// {
+		// console.log ("there is " + wpCollections.length + " element where class=\"wiki-pages\"");
+		
+		// var oldPageNamesList = wpCollections[0];
+		// var sortedPageNamesList = oldPageNamesList.cloneNode (false); // get a UL with the same class & attributes, but no children
+		
+		// var nextItem = oldPageNamesList.firstChild;
+
+		// if (null != nextItem)
+		// {
+			// var liClone = nextItem.cloneNode (true);
+			
+			// // this fails because setAttribute is not a method of liClone, which is somehow a text element.
+			// // firstChild (above) is not the right methodo to use: inspection shows 104 childNodes in oldPageNamesList, but 51 children... 
+			// // ...what's up with that?
+			// liClone.setAttribute ("class", "no-class");
+			// sortedPageNamesList.appendChild (liClone);
+
+			// oldnamesPageList.parentElement.replaceChild (sortedPageNamesList, oldnamesPageList);
+		// }
+
+	// }
 }
