@@ -6,6 +6,10 @@
 // functions to do the work
 //
 
+	var aEQb = 0;
+	var aLTb = -1;
+	var aGTb = 1;
+
 var hideRightBar = function ()
 {
 	// alert ("working...");
@@ -24,6 +28,15 @@ var showRightBar = function ()
 	$(slideRIcon).show();
 }
 
+function tocCompare (a, b)
+{
+	var rtn = aEQb;
+	
+	if (a < b) rtn = aLTb;
+	else if (a > b) rtn = aGTb;
+	
+	return rtn;
+}
 ////////////////////
 // globally referenced elements
 //
@@ -85,29 +98,48 @@ if (mainContent != null)
 	slideLocation.insertBefore (slideLIcon, slideLocation.children[0]);
 
 	
-	// next step... sort the toc
-	// var wpCollections = mainContent.getElementsByClassName ("wiki-pages");
-	// if (null != wpCollections  &&  wpCollections.length == 1)
-	// {
-		// console.log ("there is " + wpCollections.length + " element where class=\"wiki-pages\"");
+	// next step... sort the Table of Contents
+	var wpCollections = mainContent.getElementsByClassName ("wiki-pages");
+	if (null != wpCollections  &&  wpCollections.length == 1)
+	{
+		console.log ("there is " + wpCollections.length + " element where class=\"wiki-pages\"");
 		
-		// var oldPageNamesList = wpCollections[0];
-		// var sortedPageNamesList = oldPageNamesList.cloneNode (false); // get a UL with the same class & attributes, but no children
+		var oldPageNamesUL = wpCollections[0];
 		
-		// var nextItem = oldPageNamesList.firstChild;
-
-		// if (null != nextItem)
+		// the following code runs error free but does nothing 
+		// the sort function, in the end relys on a string compare which is really the reason it's not sorted properly to begin with
+		// recommend: write a custom slice() that creates an array of new objects that contain the LI and the parsed out toc number
+		//           and then the sort can properly look at the number levels
+		
+		// if (oldPageNamesUL.tagName == "UL")
 		// {
-			// var liClone = nextItem.cloneNode (true);
+			// // get an array from the list of LI nodes in the ToC UL
+			// var oldPageNameLIs = Array.prototype.slice.call (oldPageNamesUL.getElementsByTagName ("LI"));
+			// oldPageNameLIs.sort (
+				// function (a, b)
+				// {					
+					// var rtn = aEQb; // default, they are equal
+					// var aString = a.getElementsByTagName ("A")[0].innerHTML;
+					// var bString = b.getElementsByTagName ("A")[0].innerHTML;
+					
+					// if (aString == "Home")
+					// {
+						// rtn = aLTb;
+					// }
+					// else if (bString == 'Home')
+					// {
+						// rtn = aGTb;
+					// }
+					// else
+					// {
+						// rtn = tocCompare (aString, bString);
+					// }
+				// });
+			// // get a new UL with the same class & attributes as the one contaning the T0C, but no children
+			// var sortedPageNamesUL = oldPageNamesUL.cloneNode (false); 
 			
-			// // this fails because setAttribute is not a method of liClone, which is somehow a text element.
-			// // firstChild (above) is not the right methodo to use: inspection shows 104 childNodes in oldPageNamesList, but 51 children... 
-			// // ...what's up with that?
-			// liClone.setAttribute ("class", "no-class");
-			// sortedPageNamesList.appendChild (liClone);
-
-			// oldnamesPageList.parentElement.replaceChild (sortedPageNamesList, oldnamesPageList);
+			// var nextItem = oldPageNameLIs[0];
+			// var liClone = nextItem.cloneNode (true);
 		// }
-
-	// }
+	}
 }
